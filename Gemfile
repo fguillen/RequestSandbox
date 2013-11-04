@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+ruby "1.9.3"
+
+gem "sinatra"
+gem "json"
+gem "thin"
+gem "rake"
+gem "mocha"
+gem "curb"
+gem "rack-test"

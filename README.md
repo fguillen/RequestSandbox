@@ -1,9 +1,3 @@
-heat-squares
-============
+# Sinatra Skeleton
 
-Heatmap out of Foursquare data
-
-
-# TODO
-
-- The f... CONFIG["foursquare"]["client_secret"] env thing
+Simple template for a Sinatra project
