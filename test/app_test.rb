@@ -1,10 +1,10 @@
 require_relative "test_helper"
 
-class SinatraSkeleton::AppTest < MiniTest::Unit::TestCase
+class RequestSandbox::AppTest < MiniTest::Unit::TestCase
   include Rack::Test::Methods
 
   def app
-    SinatraSkeleton::App
+    RequestSandbox::App
   end
 
   def test_root
