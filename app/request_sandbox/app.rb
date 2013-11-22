@@ -1,8 +1,3 @@
-require "sinatra/base"
-require "json"
-
-require_relative "../request_sandbox"
-
 module RequestSandbox
   class App < Sinatra::Base
     set :sessions, true
