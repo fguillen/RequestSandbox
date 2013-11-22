@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <h1>How to use it</h1>
+  <p>Just send request to any URL like this one</p>
+  <div class="well row">
+    <div class="pull-left">
+      http://<%= RequestSandbox::APP_CONFIG["host"] %>/ping
+    </div>
+    <div class="pull-left">
+      <input id="show_key" type="text" placeholder="/any/url/you/want" class="form-control" />
+    </div>
+  </div>
+  <p><button type="button" id="show_button" class="btn btn-primary btn-lg" role="button">Start monitoring requests</button></p>
+</div>
+
+<script>
+  $("#show_button").click(function(){
+    $(location).attr("href", "/show/" + $("#show_key").val());
+  });
+</script>
+
+

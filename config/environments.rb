@@ -1,8 +1,11 @@
-puts "XXX: loading environments..."
-
-configure :development, :test do
+configure :development do
   set :database, "sqlite:///db/development.sqlite"
   set :show_exceptions, true
+end
+
+configure :test do
+  set :database, "sqlite:///db/test.sqlite"
+  ActiveRecord::Base.logger.level = 1
 end
 
 configure :production do

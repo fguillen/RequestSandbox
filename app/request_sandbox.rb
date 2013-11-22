@@ -1,6 +1,8 @@
 require "sinatra"
 require "sinatra/base"
 require "sinatra/activerecord"
+require "sinatra/multi_route"
+require "sinatra/json"
 require "json"
 
 require_relative "../config/environments"

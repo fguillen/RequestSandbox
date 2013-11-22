@@ -1,1 +1,11 @@
-message: "Sinatra Skeleton"
+test:
+  message: "Request Sandbox (test)"
+  host: test.com
+
+development:
+  message: "Request Sandbox (development)"
+  host: requestsandbox.dev
+
+production:
+  message: "Request Sandbox (production)"
+  host: requestsandbox.herokuapp.com

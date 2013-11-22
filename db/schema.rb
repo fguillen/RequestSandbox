@@ -14,8 +14,7 @@ ActiveRecord::Schema.define(version: 20131122165507) do
 
   create_table "requests", force: true do |t|
     t.string   "key"
-    t.string   "url"
-    t.string   "ip"
+    t.string   "info"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
