@@ -1,13 +1,9 @@
 /* app.css */
 
 body {
-  background-color: rgb(126, 245, 96);
   padding-top: 140px;
 }
 
-.navbar {
-  padding: 20px;
-}
 
 .navbar h1 {
   color: white;

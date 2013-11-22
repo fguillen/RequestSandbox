@@ -1,22 +1,37 @@
-<h1><%= @ping_url %></h1>
+<div ng-app="App">
+  <div ng-controller="RequestsController">
+    <h1><a ng-click="ping()">{{ping_url}}</a></h1>
 
-<div class="panel-group" id="accordion">
-  <% @requests.each do |request| %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= request.id %>" class="collapsed">
-            [<%= request.id %>] <%= request.created_at %>
-          </a>
-        </h4>
-      </div>
-      <div id="collapse_<%= request.id %>" class="panel-collapse collapse" style="height: 0px;">
-        <div class="panel-body">
-          <pre>
-<%= request.info %>
-          </pre>
+    <div class="panel-group">
+      <div class="panel panel-default" ng-repeat="request in requests">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse_{{request.id}}" class="collapsed">
+              [{{request.id}}] {{request.created_at}}
+            </a>
+          </h4>
+        </div>
+        <div id="collapse_{{request.id}}" class="panel-collapse collapse" style="height: 0px;">
+          <div class="panel-body">
+            <pre>
+{{request.info}}
+            </pre>
+          </div>
         </div>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>
+
+<script>
+  <% puts "XXX: yy: #{RequestSandbox::APP_CONFIG["host"]}" %>
+
+  var DATA = {};
+  DATA.ping_url = "http://<%= RequestSandbox::APP_CONFIG["host"] %>/ping/<%= @key %>";
+  DATA.js_url = "http://<%= RequestSandbox::APP_CONFIG["host"] %>/js/<%= @key %>";
+  DATA.key = "<%= @key %>";
+  DATA.requests = <%= JSON.pretty_generate(@requests.map(&:to_hash)) %>;
+</script>
+
+
+

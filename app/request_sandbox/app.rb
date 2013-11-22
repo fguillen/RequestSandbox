@@ -15,9 +15,16 @@ module RequestSandbox
     end
 
     get "/show/*" do
-      @ping_url = "#{request.base_url}#{request.path_info}".gsub("show", "ping")
-      @requests = Request.where(:key => params[:splat])
+      @key = params[:splat][0]
+      @requests = Request.where(:key => @key).order("created_at desc")
       erb :show
+    end
+
+    get "/js/*" do
+      @key = params[:splat][0]
+      @requests = Request.where(:key => @key)
+
+      json @requests.map(&:to_hash)
     end
 
     # get "/ping/:param" do
@@ -34,10 +41,10 @@ private
 
     def self.request_info(request)
       {
+        :ip => request.ip,
         :request_method => request.request_method,
-        :questy_string => request.query_string,
         :path_info => request.path_info,
-        :ip => request.ip
+        :questy_string => request.query_string
       }
     end
   end
