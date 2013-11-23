@@ -16,6 +16,7 @@ gem "rack-test"
 group :development do
  gem "sqlite3"
  gem "tux"
+ gem "thin"
 end
 
 group :production do
