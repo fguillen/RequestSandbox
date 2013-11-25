@@ -10,10 +10,9 @@ gem "thin"
 gem "rake"
 gem "mocha"
 gem "curb"
-gem "rack-test"
-
 
 group :development do
+gem "rack-test"
   gem "database_cleaner"
   gem "sqlite3"
   gem "tux"
