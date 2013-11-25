@@ -19,3 +19,18 @@ body {
 #show_page h4.panel-title a {
   text-decoration: none
 }
+
+@keyframes myfirst {
+  from {background: rgb(201, 201, 146);}
+  to {background: rgb(245, 245, 245);}
+}
+
+@-webkit-keyframes myfirst {
+  from {background: rgb(201, 201, 146);}
+  to {background: rgb(245, 245, 245);}
+}
+
+#show_page .panel-heading {
+  animation: myfirst 2s;
+  -webkit-animation: myfirst 2s;
+}
