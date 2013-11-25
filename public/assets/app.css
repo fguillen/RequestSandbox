@@ -4,7 +4,18 @@ body {
   padding-top: 140px;
 }
 
-
-.navbar h1 {
+.navbar h1 a{
   color: white;
+}
+
+#home_form #show_key {
+  margin-left: 10px;
+}
+
+#show_page h1 {
+  cursor: pointer;
+}
+
+#show_page h4.panel-title a {
+  text-decoration: none
 }

@@ -19,9 +19,13 @@ App.controller( "RequestsController", function($scope, $http) {
 
 });
 
-function reset_data(){
-  console.log("reset_data ...");
+App.filter("json_pretty", function () {
+  return function (text, length, end) {
+    return JSON.stringify(text, null, 2);
+  };
+});
 
+function reset_data(){
   $.get(
     DATA.js_url,
     function(data){

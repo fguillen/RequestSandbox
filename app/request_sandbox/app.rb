@@ -31,7 +31,7 @@ module RequestSandbox
     route :get, :post, :put, :delete, "/ping/*" do
       Request.create!(
         :key => params[:splat][0],
-        :info => JSON.pretty_generate(RequestSandbox::App::request_info(request))
+        :info => RequestSandbox::App::request_info(request)
       )
 
       json :status => :ok
@@ -40,11 +40,18 @@ module RequestSandbox
 private
 
     def self.request_info(request)
+      headers = {}
+
+      request.env.keys.select{ |key| key =~ /^HTTP_/ }.each do |key|
+        headers[key] = request.env[key]
+      end
+
       {
         :ip => request.ip,
         :request_method => request.request_method,
         :path_info => request.path_info,
-        :questy_string => request.query_string
+        :questy_string => request.query_string,
+        :headers => headers
       }
     end
   end

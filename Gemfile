@@ -14,11 +14,12 @@ gem "rack-test"
 
 
 group :development do
- gem "sqlite3"
- gem "tux"
- gem "thin"
+  gem "database_cleaner"
+  gem "sqlite3"
+  gem "tux"
+  gem "thin"
 end
 
 group :production do
- gem "pg"
+  gem "pg"
 end

@@ -3,6 +3,14 @@ require_relative "test_helper"
 class RequestSandbox::AppTest < MiniTest::Unit::TestCase
   include Rack::Test::Methods
 
+  def setup
+    DatabaseCleaner.start
+  end
+
+  def teardown
+    DatabaseCleaner.clean
+  end
+
   def app
     RequestSandbox::App
   end
@@ -33,9 +41,9 @@ class RequestSandbox::AppTest < MiniTest::Unit::TestCase
   end
 
   def test_show
-    request_1 = Request.create!(:key => "THE_KEY")
-    request_2 = Request.create!(:key => "THE_KEY")
-    request_3 = Request.create!(:key => "OTHER_KEY")
+    request_1 = Request.create!(:key => "THE_KEY", :info => {:key => "value"})
+    request_2 = Request.create!(:key => "THE_KEY", :info => {:key => "value"})
+    request_3 = Request.create!(:key => "OTHER_KEY", :info => {:key => "value"})
 
     get "/show/THE_KEY"
 
