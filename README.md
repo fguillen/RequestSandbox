@@ -1,7 +1,7 @@
 # Request Sandbox
 
-Simple template for a Sinatra project
+A place to send request so you can monitorize them.
 
-# TODO
+Check the demo site:
 
-- Make URLs using the actual URL not the "host" config key
+- http://requestsandbox.herokuapp.com
