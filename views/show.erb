@@ -3,6 +3,7 @@
     <h1>
       {{ping_url}}
       <a ng-click="ping()" type="button" class="btn btn-info">Make a Request</a>
+      <a href="/reset/<%= @key %>" type="button" class="btn btn-danger">Delete all Requests</a>
     </h1>
 
     <div class="panel-group">
@@ -30,8 +31,8 @@
 
 <script>
   var DATA = {};
-  DATA.ping_url = "http://<%= request.host %>/ping/<%= @key %>";
-  DATA.js_url = "http://<%= request.host %>/js/<%= @key %>";
+  DATA.ping_url = "http://<%= request.host %>:<%= request.port %>/ping/<%= @key %>";
+  DATA.js_url = "http://<%= request.host %>:<%= request.port %>/js/<%= @key %>";
   DATA.key = "<%= @key %>";
   DATA.requests = <%= JSON.pretty_generate(@requests.map(&:to_hash)) %>;
 </script>

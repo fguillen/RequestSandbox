@@ -50,4 +50,19 @@ class RequestSandbox::AppTest < MiniTest::Unit::TestCase
     assert_match "THE_KEY", last_response.body
     refute_match "OTHER_KEY", last_response.body
   end
+
+  def test_reset
+    request_1 = Request.create!(:key => "THE_KEY", :info => {:key => "value"})
+    request_2 = Request.create!(:key => "THE_KEY", :info => {:key => "value"})
+    request_3 = Request.create!(:key => "OTHER_KEY", :info => {:key => "value"})
+
+    get "/reset/THE_KEY"
+
+    assert last_response.redirect?
+    assert_equal("http://example.org/show/THE_KEY", last_response.location)
+
+    assert_equal(false, Request.exists?(request_1.id))
+    assert_equal(false, Request.exists?(request_2.id))
+    assert_equal(true, Request.exists?(request_3.id))
+  end
 end

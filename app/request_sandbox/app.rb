@@ -27,7 +27,14 @@ module RequestSandbox
       json @requests.map(&:to_hash)
     end
 
-    # get "/ping/:param" do
+    get "/reset/*" do
+      @key = params[:splat][0]
+      Request.where(:key => @key).delete_all
+      redirect "/show/#{@key}"
+    end
+
+
+    # all "/ping/*"
     route :get, :post, :put, :delete, "/ping/*" do
       Request.create!(
         :key => params[:splat][0],
